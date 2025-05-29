@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "icGDwjBjzwgek0SrV0B9O5Q5v/gNqsajWU/oF0xoE2g=",
+  "Source": "ClinicaVeterinaria.API",
+  "BasePath": "_content/ClinicaVeterinaria.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
