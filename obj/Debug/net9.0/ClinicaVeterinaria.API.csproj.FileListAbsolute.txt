@@ -156,3 +156,4 @@ C:\Users\Porkinho\Desktop\ap2-modelagem\ClinicaVeterinaria.API\obj\Debug\net9.0\
 C:\Users\Porkinho\Desktop\ap2-modelagem\ClinicaVeterinaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Porkinho\Desktop\ap2-modelagem\ClinicaVeterinaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Porkinho\Desktop\ap2-modelagem\ClinicaVeterinaria.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Porkinho\Desktop\ap2-modelagem\ClinicaVeterinaria.API\obj\Debug\net9.0\ClinicaVeterinaria.API.sourcelink.json

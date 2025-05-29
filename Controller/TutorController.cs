@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/tutor")]
+[Route("api/[controller]")]
 public class TutorController : ControllerBase
 {
     private readonly ITutorRepository _repo;
@@ -11,12 +11,12 @@ public class TutorController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Tutor>> Get() => Ok(_repo.GetAllAsync());
+    public async Task<ActionResult<IEnumerable<Tutor>>> Get() => Ok(await _repo.GetAllAsync());
 
     [HttpGet("{id}")]
-    public ActionResult<Tutor> GetById(int id)
+    public async Task<ActionResult<Tutor>> GetById(int id)
     {
-        var tutor = _repo.GetByIdAsync(id);
+        var tutor = await _repo.GetByIdAsync(id);
         return tutor is null ? NotFound() : Ok(tutor);
     }
 
@@ -28,19 +28,16 @@ public class TutorController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public ActionResult<Tutor> Put(int id, Tutor tutor)
+    public async Task<ActionResult<Tutor>> Put(int id, Tutor tutor)
     {
-        if (id != tutor.Id)
-            return BadRequest();
-
-        var tutorAtualizado = _repo.UpdateAsync(id, tutor);
+        var tutorAtualizado = await _repo.PutAsync(id, tutor);
         return tutorAtualizado is null ? NotFound() : Ok(tutorAtualizado);
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<Tutor> Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var tutorDeletado = _repo.DeleteAsync(id);
-        return tutorDeletado is null ? NotFound() : Ok(tutorDeletado);
+        var tutorDeletado = await _repo.DeleteAsync(id);
+        return tutorDeletado  ? NoContent() : NotFound();
     }
 }

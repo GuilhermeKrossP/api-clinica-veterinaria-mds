@@ -16,7 +16,7 @@ public class PetController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Pet>> GetById(int id)
     {
-        var pet = _repo.GetByIdAsync(id);
+        var pet = await _repo.GetByIdAsync(id);
         return pet is null ? NotFound() : Ok(pet);
     }
 

@@ -15,7 +15,7 @@ public class TutorRepository : ITutorRepository
 
     public async Task<Tutor> AddAsync(Tutor tutor)
     {
-         await _context.Tutores.AddAsync(tutor);
+        _context.Tutores.Add(tutor);
         await _context.SaveChangesAsync();
         return tutor;
     }
@@ -26,11 +26,25 @@ public class TutorRepository : ITutorRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
         var tutor = await GetByIdAsync(id);
-        if (tutor is null) return;
+        if (tutor is null) return false;
         _context.Tutores.Remove(tutor);
         await _context.SaveChangesAsync();
+        return true;
+    }
+    public async Task<Tutor?> PutAsync(int id, Tutor tutor)
+    {
+        var update = await _context.Tutores.FindAsync(id);
+        if (update == null)
+            return null;
+
+        update.Nome = tutor.Nome;
+        update.Telefone = tutor.Telefone;
+        update.Email = tutor.Email;
+
+        await _context.SaveChangesAsync();
+        return update;
     }
 }
