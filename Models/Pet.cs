@@ -5,4 +5,5 @@ public class Pet
     public string? Especie { get; set; }
     public string? Raca { get; set; }
     public int TutorId { get; set; }
+    
 }
