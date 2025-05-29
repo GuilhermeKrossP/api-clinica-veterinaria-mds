@@ -14,7 +14,7 @@ public class PetController : ControllerBase
     public async Task<ActionResult<IEnumerable<Pet>>> Get() => Ok(await _repo.GetAllAsync());
 
     [HttpGet("{id}")]
-    public ActionResult<Pet> GetById(int id)
+    public async Task<ActionResult<Pet>> GetById(int id)
     {
         var pet = _repo.GetByIdAsync(id);
         return pet is null ? NotFound() : Ok(pet);
@@ -35,9 +35,9 @@ public class PetController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<Pet> Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var petDeletado = _repo.DeleteAsync(id);
-        return petDeletado is null ? NotFound() : Ok(petDeletado);
+        var petDeletado = await _repo.DeleteAsync(id);
+        return petDeletado ? NoContent() : NotFound();
     }
 }
